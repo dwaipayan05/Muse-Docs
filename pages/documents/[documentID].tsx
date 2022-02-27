@@ -23,21 +23,6 @@ const style = {
   divStyle : `w-screen h-screen bg-white-200 z-40 opacity-95 flex items-center justify-center`,
 
 }
-const PlayButton = styled.button({
-  outline: 'none',
-  background: 'transparent',
-  opacity: '0',
-  cursor: 'pointer',
-  padding: '30px',
-  border: 0,
-  transition: 'transform 1s ease-out, opacity 1s ease-out',
-  '&:hover': {
-    transform: 'scale(1.07)',
-  },
-  '&:active': {
-    transform: 'scale(1.03)',
-  },
-})
 
 //@ts-ignore
 const documentPlayback = ({ providers, session }) => {
@@ -56,7 +41,130 @@ const documentPlayback = ({ providers, session }) => {
   const ambiencePlayer = useRef<Tone.Player>()
   const loadingCoverRef = useRef<HTMLDivElement>(null)
 
-  
+  const JournalScreen = dynamic(
+    () => import('../../components/typeScreen'),
+    {
+      ssr: false,
+    }
+  )
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      sampler.current = new Tone.Sampler({
+        urls: {
+          C1: 'C1.mp3',
+          'D#1': 'Ds1.mp3',
+          'F#1': 'Fs1.mp3',
+          A1: 'A1.mp3',
+          C2: 'C2.mp3',
+          'D#2': 'Ds2.mp3',
+          'F#2': 'Fs2.mp3',
+          A2: 'A2.mp3',
+          C3: 'C3.mp3',
+          'D#3': 'Ds3.mp3',
+          'F#3': 'Fs3.mp3',
+          A3: 'A3.mp3',
+          C4: 'C4.mp3',
+          'D#4': 'Ds4.mp3',
+          'F#4': 'Fs4.mp3',
+          A4: 'A4.mp3',
+          C5: 'C5.mp3',
+          C6: 'C6.mp3',
+        },
+        release: 1,
+
+        baseUrl: '/samples/',
+        onload: () => setSamplerIsReady(true),
+      }).toDestination()
+
+      ambiencePlayer.current = new Tone.Player('/samples/ambient-sound.mp3', () =>
+        setAmbienceIsReady(true)
+      ).toDestination()
+      ambiencePlayer.current.volume.value = -33
+      ambiencePlayer.current.loop = true
+    }
+  }, [])
+
+  function handlePlayClick() {
+    Tone.start().then(() => {
+      // Play the ambience:
+      if (ambiencePlayer.current?.state !== 'started') {
+        ambiencePlayer.current?.start()
+      }
+      loadingCoverRef.current!.style.transition = 'opacity 500ms ease-out'
+      loadingCoverRef.current!.style.opacity = '0'
+
+      setTimeout(() => {
+        loadingCoverRef.current!.style.display = 'none'
+
+        setTimeout(() => {
+          let lastKeyTime = 0
+          let runningSquish = 0
+          const textArea = document.querySelector('textarea')
+
+          if (textArea && entryData!.events) {
+            for (const [time, event] of Object.entries(entryData!.events)) {
+              let playTime = parseInt(time) - runningSquish
+              const timeGap = playTime - lastKeyTime
+              if (timeGap > 1000) {
+                const timeSkipped = timeGap - 1000
+                runningSquish += timeSkipped 
+                playTime = playTime - timeSkipped
+              }
+              lastKeyTime = playTime
+
+              if (persistEventIsSelection(event)) {
+                setTimeout(() => {
+                  textArea.setSelectionRange(
+                    event.selectionStart,
+                    event.selectionEnd
+                  )
+                }, playTime)
+              } else if (persistEventIsKey(event)) {
+                const keychar = event.key
+
+                setTimeout(() => {
+                  if (keychar === 'Backspace') {
+                    if (textArea.selectionStart === textArea.selectionEnd) {
+                      textArea.setSelectionRange(
+                        textArea.selectionStart - 1,
+                        textArea.selectionEnd
+                      )
+                    }
+                    textArea.setRangeText('')
+                  } else if (keychar === 'Enter') {
+                    textArea.setRangeText(`\r\n`)
+                    textArea.setSelectionRange(
+                      textArea.value.length,
+                      textArea.value.length
+                    )
+                  } else {
+                    textArea.setRangeText(keychar)
+                    textArea.setSelectionRange(
+                      textArea.value.length,
+                      textArea.value.length
+                    )
+                  }
+
+                  for (const note of event.notes) {
+                    setTimeout(() => {
+                      sampler.current!.triggerAttackRelease(
+                        [note.note],
+                        note.duration,
+                        undefined,
+                        note.velocity
+                      )
+                    }, note.delayFromKeyPress)
+                  }
+                  textArea.scrollTop = textArea.scrollHeight
+                }, playTime)
+              }
+            }
+          }
+        }, 500)
+      }, 550)
+    })
+  }
   useEffect(() => {
     if (documentID && typeof documentID === 'string') {
       getDoc(doc(db, 'MuseEntries', documentID)).then((entry) => {
