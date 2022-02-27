@@ -2,7 +2,9 @@
 <p align="center">
   <img src = "https://user-images.githubusercontent.com/53687927/155859074-3f9c6eda-9a02-482d-8325-afc9fbcaf638.png"/>
 </p>
-Have you ever hummed a beat while writing down your thoughts ? Are you an avid writer who just loves to pen down those beautiful thoughts crossing your mind while sipping coffee while watching the sunset from your balcony. Muse Docs is the place for you, a platform for users to pen down their thoughts, feelings, to-do lists or just some gibberish and have a few soothing chords aligned with each keypress based on the sentiment score of what you pen down.
+
+## A Brief Introduction
+Have you ever hummed a beat while writing down your thoughts ? Are you an avid writer who just loves to pen down those beautiful thoughts crossing your mind while sipping coffee while watching the sunset from your balcony. Muse Docs is the place for you, a platform for users to pen down their thoughts, feelings, to-do lists or just some gibberish and have a few soothing chords aligned with each keypress based on the sentiment score of what you pen down. Every piece of writing is accompanied by a unique melody generated based on the sentiment of the content. The melodies are interpolated from two sets of music notes using a variational auto encoder (MusicVAE). The platform also presents few additional features which have been mentioned below.
 
 ## Features Of Muse Docs :
 ![image](https://user-images.githubusercontent.com/53687927/155858902-d9e63dad-7cc2-4214-b160-ea53b6cc594a.png)
@@ -24,7 +26,7 @@ Have you ever hummed a beat while writing down your thoughts ? Are you an avid w
 ## Meet the Team
 Made with :heart: by Team <b>Mint_Money</b>  for [Hackverse 3.0](https://hackverse.nitk.ac.in/)
 - [Jai Khandelwal](https://github.com/JaiKhandelwal)
-- [Nikhil Sahu]()
+- [Nikhil Sahu](https://github.com/nikhilsahu9100)
 - [Dwaipayan Munshi](https://github.com/dwaipayan05)
 
 ## Resources
