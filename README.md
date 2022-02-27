@@ -24,7 +24,7 @@ Have you ever hummed a beat while writing down your thoughts ? Are you an avid w
   - Copy those INoteSequences into `genMelo.tsx`
   - Generate Melodies & Paste those into `melodies.tsx`
 ## Meet the Team
-Made with :heart: by Team <b>Mint_Money</b>  for [Hackverse 3.0](https://hackverse.nitk.ac.in/)
+Made with :heart: by Team <b>MintMoney</b>  for [Hackverse 3.0](https://hackverse.nitk.ac.in/)
 - [Jai Khandelwal](https://github.com/JaiKhandelwal)
 - [Nikhil Sahu](https://github.com/nikhilsahu9100)
 - [Dwaipayan Munshi](https://github.com/dwaipayan05)
