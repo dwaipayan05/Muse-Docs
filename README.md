@@ -40,7 +40,7 @@ Made with :heart: by Team <b>MintMoney</b>  for [Hackverse 3.0](https://hackvers
 - [Dwaipayan Munshi](https://github.com/dwaipayan05)
 
 ## Resources
-- [Notion ThinkPad](https://catnip-sole-709.notion.site/HackVerse-Project-22-89ffee4f843d4e7e8781b1db3c40ab7a) : Design Document with Tracking of Tasks for Hackverse'22
+- [Notion ThinkPad](https://catnip-sole-709.notion.site/HackVerse-Project-22-89ffee4f843d4e7e8781b1db3c40ab7a) : Design Document with Tracking of Tasks & Ideas for Hackverse'22
 - [Architecture](https://lucid.app/lucidchart/07517a80-b89f-458a-b9e0-eb9a9d57eb71/edit?invitationId=inv_179d8b2d-5971-414a-a51f-5b8ca566b567) : Lucid Chart Diagram of the Build
 - [Demo Video](https://www.loom.com/share/8a0f0f7007234cc8812086ca7e406fb7) : A Loom Video Recording of Muse-Docs
 - [Audio Samples](https://drive.google.com/drive/folders/177NaXD2w6evbb-Fil82aRwX-8pjw2GGr?usp=sharing) : Audio Notes Used for Melody Generation using VAEs
