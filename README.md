@@ -23,6 +23,16 @@ Have you ever hummed a beat while writing down your thoughts ? Are you an avid w
   - Use `convMIDI.tsx` to generate INoteSequences
   - Copy those INoteSequences into `genMelo.tsx`
   - Generate Melodies & Paste those into `melodies.tsx`
+ 
+## Demo
+<a href="https://www.loom.com/share/8a0f0f7007234cc8812086ca7e406fb7">
+    <p align = "center" >Muse Docs Demo - Watch Video</p>
+  <p align="center">
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/8a0f0f7007234cc8812086ca7e406fb7-with-play.gif">
+  </p>
+  </a>
+
+
 ## Meet the Team
 Made with :heart: by Team <b>MintMoney</b>  for [Hackverse 3.0](https://hackverse.nitk.ac.in/)
 - [Jai Khandelwal](https://github.com/JaiKhandelwal)
